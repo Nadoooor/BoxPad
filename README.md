@@ -36,6 +36,13 @@ Well, I have many hardware components and I want to make something with them, bu
 > [!NOTE]
 > Here you are the [Fusion Assembly](https://a360.co/4h1u5xi)
 
-## How to Build:
+## How to Build (Using Printed Parts):
 
-1. 
+1. Print all your parts.
+2. Put the MX Switches in their places on the cover.
+3. Solder the screen and the Rotary Encoder.
+4. Place the PCB under the switches and Solder them.
+5. Solder the XIAO on the board, using its pin header so you can control its height.
+6. Solder the JST connector of the NEOsticks 
+7. Connect the NEOsticks, and put them inside the case corners.
+8. 
