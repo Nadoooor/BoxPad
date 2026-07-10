@@ -44,5 +44,21 @@ Well, I have many hardware components and I want to make something with them, bu
 4. Place the PCB under the switches and Solder them.
 5. Solder the XIAO on the board, using its pin header so you can control its height.
 6. Solder the JST connector of the NEOsticks 
-7. Connect the NEOsticks, and put them inside the case corners.
-8. 
+7. Connect the NEOsticks, and put them inside the case corners using hot glue.
+8. Download CircuitPython, and install it into the XIAO RP2040.
+9. Copy What's inside the [Firmware Folder](Firmware), and paste it inside the CIRCUITPY Drive.
+10. Replug the MCU and it will run automaticly.
+
+## How to Build (DIYing):
+
+1. Find any Box to recycle. (Like a cheese box).
+2. Cut the exact mesurements of the SWs, rotary encoder, and OLED screen holes on the cover of the box.
+3. Put the SWs, and the rotary encoder on the cover of the box.
+4. Hand wire and solder the Diodes and the ROWs and COLs from the back, also the Rotary encoder and the OLED.
+5. Solder a 4 NEOsticks chain, and using hot glue put them inside the box.
+6. Connect everything to the XIAO PinHeader (or use a small breadboard).
+7. Connect the XIAO to the PC/Laptop.
+8. Use the same steps as in step (8) in (How to bulid using printed parts.)
+
+---------------
+# Made with ❤️, By @Nadoooor
