@@ -1,0 +1,7 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"D1, D2, D3, D4, D5, D6, D7, D8",D_DO-35_SOD27_P7.62mm_Horizontal,8,D,
+D9,JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,1,WS2812,
+"SW1, SW2, SW3, SW4, SW5, SW6, SW7, SW8",SW_Cherry_MX_1.00u_PCB_Wtih_3D,8,SW_Push_45deg,
+SW9,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,1,RotaryEncoder_Switch,
+U1,XIAO-RP2040-DIP,1,XIAO-RP2040-SMD,
+U2,Display_128x64_096_I2C,1,OLED_I2C,
