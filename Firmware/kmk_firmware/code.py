@@ -1,6 +1,7 @@
 print("Starting")
 
 import board
+import time
 import busio
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.keys import KC
@@ -12,40 +13,34 @@ from kmk.extensions.rgb import RGB
 from kmk.extensions.rgb import AnimationModes
 from kmk.extensions.display import Display, TextEntry, ImageEntry
 from kmk.extensions.display.ssd1306 import SSD1306  
+from kmk.modules.layers import Layers
 
 
 keyboard = KMKKeyboard()
+layers = Layers()
 
-keyboard.modules = [encoder_handler]
-# Regular GPIO Encoder
+keyboard.modules = [encoder_handler, layers]
 
-keyboard.extensions.append(MediaKeys())
+mediakeys = MediaKeys()
+keyboard.extensions.append(mediakeys)
 
-
+# keyboard cols and rows
 keyboard.col_pins = (board.D3, board.D2, board.D1, board.D0)
 keyboard.row_pins = (board.D7, board.D8)
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
+# RGB
 rgb = RGB(pixel_pin=board.D6,
         num_pixels=16,
         val_limit=100, 
         hue_default=0,
         sat_default=100,
         rgb_order=(1, 0, 2),  # GRB WS2812
-        val_default=100,
-        hue_step=5,
-        sat_step=5,
-        val_step=5,
-        animation_speed=1,
-        breathe_center=1,  # 1.0-2.7
-        knight_effect_length=3,
-        animation_mode=AnimationModes.SWIRL,
-        reverse_animation=False,
-        refresh_rate=60,
+        animation_mode=AnimationModes.STATIC,
         )
 keyboard.extensions.append(rgb)
 
-
+#Display
 i2c_bus = busio.I2C(board.SCL, board.SDA)
 
 driver = SSD1306(
@@ -54,22 +49,11 @@ driver = SSD1306(
 )
 
 display = Display(
-    # Mandatory:
+    
     display=driver,
-    # Optional:
-    width=128, # screen size
-    height=64, # screen size
-    flip = False, # flips your display content
-    flip_left = False, # flips your display content on left side split
-    flip_right = False, # flips your display content on right side split
-    brightness=0.8, # initial screen brightness level
-    brightness_step=0.1, # used for brightness increase/decrease keycodes
-    dim_time=20, # time in seconds to reduce screen brightness
-    dim_target=0.1, # set level for brightness decrease
-    off_time=60, # time in seconds to turn off screen
-    powersave_dim_time=10, # time in seconds to reduce screen brightness
-    powersave_dim_target=0.1, # set level for brightness decrease
-    powersave_off_time=30, # time in seconds to turn off screen
+    
+    width=128, 
+    height=64, 
 )
 
 display.entries = [
@@ -79,26 +63,63 @@ display.entries = [
 ]
 keyboard.extensions.append(display)
 
+scanfunc = keyboard.after_matrix_scan
+lastlayer = 0
 
+def layers_handling(*args, **kwargs):
+    global lastlayer
+    scanfunc()
+    curlayer = keyboard.active_layers[0]    
+    if lastlayer != curlayer:
+        lastlayer = curlayer
+        display.entries = []   
+
+        if curlayer == 0:
+            display.entries.append(TextEntry(text="Media Layer!!\n", x=0, y=0))
+            display.entries.append(TextEntry(text="Encoder: Volume\n", x=0, y=12))
+            rgb.set_rgb_fill((0, 255, 0))
+            
+
+        elif curlayer == 1:
+            display.entries.append(TextEntry(text="Work Layer!!\n", x=0, y=0))
+            display.entries.append(TextEntry(text="Encoder: Scroll\n", x=0, y=12))
+            rgb.set_rgb_fill((255, 0, 0))
+            
+        elif curlayer == 2:
+            display.entries.append(TextEntry(text="Browsing Layer!!\n", x=0, y=0))
+            display.entries.append(TextEntry(text="Encoder: Tap_switching\n", x=0, y=12))
+            rgb.set_rgb_fill((0, 0, 255))
+            
+    
+keyboard.after_matrix_scan = layers_handling
+# Encoder
 
 encoder_handler.pins = (
-    
-    (board.MOSI, board.MISO, None), # encoder #1 
+    (board.MOSI, board.MISO, None), 
     )
 
-encoder_handler.map = [ (
-    
-    ( KC.RGB_HUI, KC.RGB_HUD, KC.MUTE),
-                         
-                         ),] 
 
 
-
-
+# mappings
+encoder_handler.map = [ 
+    (( KC.VOLU, KC.VOLD),),
+    (( KC.PGUP, KC.PGDN),),
+    (( KC.LCTRL(KC.TAB), KC.LCTRL(KC.LSHIFT(KC.TAB))),),
+    ] 
 
 keyboard.keymap = [
-    [KC.A, KC.B, KC.C, KC.D,
-     KC.E, KC.F, KC.G, KC.H]
+    # Layer 1 (Media)
+
+    [KC.MPLY, KC.MUTE, KC.MNXT, KC.TO(1),
+     KC.MPRV, KC.ENT, KC.SPC, KC.ESC],
+
+     # Layer 2 (Work)
+    [KC.LCTRL(KC.C), KC.LCTRL(KC.Y), KC.HOME, KC.TO(2),
+     KC.LCTRL(KC.V), KC.LCTRL(KC.Z), KC.END, KC.DEL],
+
+     # Layer 3 (BROWSING)
+     [KC.LCTRL(KC.T), KC.MUTE, KC.F5, KC.TO(0),
+     KC.LALT(KC.LEFT), KC.LALT(KC.RIGHT), KC.LCTRL(KC.MINUS), KC.LCTRL(KC.EQUAL)]
 ]
 
 if __name__ == '__main__':
