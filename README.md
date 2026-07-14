@@ -2,7 +2,7 @@
 ---------------------
 
 <p align="center">
-  <img src="Photos/Rendered.PNG" alt="Centered Image" width="600">
+  <img src="Photos/Rendered.png" alt="Centered Image" width="600">
 </p>
 
 -------------------
@@ -40,7 +40,7 @@ Well, I have many hardware components and I want to make something with them, bu
 > Here you are the [Fusion Assembly](https://a360.co/4h1u5xi)
 
 ### Demo Video:
-<video controls src="Demo.mp4" title="Demo Video of BoxPad"></video>
+You will find this video [Here](https://youtube.com/shorts/f90f9HWrAXo?feature=share)
 
 ## How to Build (Using Printed Parts):
 
