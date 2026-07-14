@@ -32,11 +32,9 @@ keyboard.diode_orientation = DiodeOrientation.COL2ROW
 # RGB
 rgb = RGB(pixel_pin=board.D6,
         num_pixels=16,
-        val_limit=100, 
-        hue_default=0,
-        sat_default=100,
+        animation_speed=3,
         rgb_order=(1, 0, 2),  # GRB WS2812
-        animation_mode=AnimationModes.STATIC,
+
         )
 keyboard.extensions.append(rgb)
 
@@ -68,29 +66,45 @@ lastlayer = 0
 
 def layers_handling(*args, **kwargs):
     global lastlayer
-    scanfunc()
+    scanfunc(*args, **kwargs)
     curlayer = keyboard.active_layers[0]    
     if lastlayer != curlayer:
         lastlayer = curlayer
         display.entries = []   
 
-        if curlayer == 0:
+        if curlayer == 2:
             display.entries.append(TextEntry(text="Media Layer!!\n", x=0, y=0))
             display.entries.append(TextEntry(text="Encoder: Volume\n", x=0, y=12))
+            rgb.animation_mode = None
             rgb.set_rgb_fill((0, 255, 0))
+            rgb.show()
+            time.sleep(1)
+            rgb.animation_mode = AnimationModes.SWIRL
+            rgb.show()
+
             
 
-        elif curlayer == 1:
+        elif curlayer == 0:
             display.entries.append(TextEntry(text="Work Layer!!\n", x=0, y=0))
             display.entries.append(TextEntry(text="Encoder: Scroll\n", x=0, y=12))
+            rgb.animation_mode = None 
             rgb.set_rgb_fill((255, 0, 0))
+            rgb.show()
+            time.sleep(1)
+            rgb.animation_mode = AnimationModes.SWIRL
+            rgb.show()
             
-        elif curlayer == 2:
+        elif curlayer == 1:
             display.entries.append(TextEntry(text="Browsing Layer!!\n", x=0, y=0))
             display.entries.append(TextEntry(text="Encoder: Tap_switching\n", x=0, y=12))
+            rgb.animation_mode = None
             rgb.set_rgb_fill((0, 0, 255))
+            rgb.show()
+            time.sleep(1)
+            rgb.animation_mode = AnimationModes.SWIRL
+            rgb.show()
             
-    
+        
 keyboard.after_matrix_scan = layers_handling
 # Encoder
 
@@ -124,4 +138,5 @@ keyboard.keymap = [
 
 if __name__ == '__main__':
     keyboard.go()
+
 
