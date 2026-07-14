@@ -2,7 +2,7 @@
 ---------------------
 
 <p align="center">
-  <img src="Photos/Rendered.png" alt="Centered Image" width="600">
+  <img src="Photos/Rendered.PNG" alt="Centered Image" width="600">
 </p>
 
 -------------------
