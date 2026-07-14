@@ -341,6 +341,46 @@ So, i started by drawing this on the other faces, and use the same way to make t
 
 But tbh i saw the white paper while glowing and saw that the lines on the back of this paper are appeared.
 
+So, i decided to remove them and work on removing the drawing by scratching.
+
+And then i finished all the patterns after. (Unfortunattly i cut one by mistake, but it is from the back side so it is ok it won't appear.)
+
+and yeah took this pic after connecting all the wires again.
+
+![alt text](Photos/Jounral/backag.png)
+
+Well, after that. I searched a looooot about the QMK firmware.
+
+Well let me make a section for this.
+
+#### Firmware.
+
+uhhhhh, this part was the baddest.
+
+> [!NOTE]
+>First i was afraid that this can consider frauding 'cause i was searching and trying to write code. So I just recorded 30 minutes and closed the rec. but i sit like for another 2 hours only searching about the QMK and searching how to configure it.
+
+Well, i will briefly say what i made for this, Well i hate QMK AND KMK. 
+
+Why? Because these two updated their firmware configuration methods and no one updates the docs for that.
+
+So, tbh i made the AI help me out with that. 
+
+Well, i search a lot about QMK, and hated how the docs are not updated so i decided to delete this shit, and focus on KMK. well, tried a lot to find a software like POG but with support to OLEDs, but i didn't find a stable one.
+
+So, yeah i decided to write my own code myself, and with the help of the AI.
+
+Well, first i opend the Docs of KMK, and found the OLED section and all the modules and extensionss i will use.
+
+And then started writing my keymapings and layers and so on, and every problem i face and the docs don't explain it. I send to Gemini and it tells me based on the Library code itself, not the docs.
+
+I make him read the libirary and write me like a corrected docs.
+
+So i can fix the error i face.
+
+And yeah after finishing that all i made the best project in my life YET.
+
+And yeah iam gonna now record a demo for it and link it in the README.
 
 ### Recording Links (5.3 Hours):
 - https://lapse.hackclub.com/timelapse/KDBjGGJKgE9H
