@@ -142,3 +142,5 @@ And that's it for this session, i fully finished the Design and iam ready to sta
 (Oh yeah i also made the BOM and searched for the parts, and wrote the README)
 ### Recording Links (5.16 Hours)
 - https://lapse.hackclub.com/timelapse/8QDWHA167W5p
+
+EEntry
