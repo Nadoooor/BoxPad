@@ -13,13 +13,16 @@ A macropad in a cheese box. This is a macropad made from scratch with MX switche
 ## Why making this?
 Well, I have many hardware components and I want to make something with them, but 3D printing and PCB printing in Egypt costs so much, so gonna DIY it from scratch.
 
+> [!NOTE]
+> AI helped a lil with the firmware DOCS because KMK & QMK are kinda outdated
+
 ## Features:
 - MX switchs in a 2x4 Metrix.
 - OLED 0.96' Screen.
 - Rotary Encoder.
 - NEO sticks.
 
-## Photos:
+## Photos & Demo:
 
 ### Schematic:
 ![alt text](Photos/Schem.png)
@@ -35,6 +38,9 @@ Well, I have many hardware components and I want to make something with them, bu
 
 > [!NOTE]
 > Here you are the [Fusion Assembly](https://a360.co/4h1u5xi)
+
+### Demo Video:
+<video controls src="Demo.mp4" title="Demo Video of BoxPad"></video>
 
 ## How to Build (Using Printed Parts):
 
